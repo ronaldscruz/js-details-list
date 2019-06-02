@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- 
+        > Todos os componentes têm uma div envoltória e uma div com o conteúdo
+        > Os nomes dos elementos estão em inglês
+     -->
+
+    <!-- WRAPPER DA BARRA SUPERIOR -->
+    <div class="header-navbar">
+
+        <!-- CONTEÚDO DA NAVBAR -->
+        <div id="navbar-content">
+            <a href="#"><ion-icon name="arrow-back" id="return"></ion-icon></a> 
+            <span id="navbar-title">CARTEIRA DE AGENDAMENTOS</span>
+            <span></span>
+        </div>
+
+    </div>
+
+    <!-- BARRA DE PESQUISA -->
+    <div class="search-bar">
+        <div class="search-bar-content">
+
+            <!-- DIV ENVOLTÓRIA DO BOTÃO DE PESQUISA E DA CAIXA DE TEXTO -->
+            <div>
+                <!-- BOTÃO DE PESQUISA -->
+                <button class="btn-with-icon" id="search-btn">
+                    <ion-icon name="search"></ion-icon>
+                </button>
+        
+                <!-- CAIXA DE PESQUISA -->
+                <input type="text" name="search" class="search-input" placeholder="Pesquisar">
+            </div>
+    
+            <!-- BOTÃO DE FILTRO -->
+            <button class="btn-with-icon" id="filter-btn">
+                <ion-icon name="funnel"></ion-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- DIV ENVOLTÓRIA DA LISTA DE ITENS -->
+    <div class="equipment">
+
+        <!-- LISTA DE ITENS -->
+        <ul class="equipment-list">
+
+            <!-- Os ID's estão definidos manualmente, por uma questão ilustrativa -->
+            <li class="equipment-list-item">
+                <span class="equip-row">
+                    <span class="equip-name"> Câmera Nikon D5300 </span>
+                    <ion-icon name="arrow-dropdown" class="show-more hidden" id="details-1" onclick="toggleDetails(this)"></ion-icon>                    
+                </span>
+                <div class="equip-details" id="">
+                    Patrimônio: 130738299<br>
+                    Data: 17/05/2019<br>
+                    Períodos: Manhã<br>
+                    Devolução: Aguardando<br>
+                </div>
+            </li>
+
+            <li class="equipment-list-item">
+                <span class="equip-row">
+                    <span class="equip-name"> Câmera Canon EOS Rebel T6 Ef-s </span>
+                    <ion-icon name="arrow-dropdown" class="show-more hidden" id="details-2" onclick="toggleDetails(this)"></ion-icon>                    
+                </span>
+                <div class="equip-details">
+                    Patrimônio: 130738299<br>
+                    Data: 17/05/2019<br>
+                    Períodos: Manhã<br>
+                    Devolução: Aguardando<br>
+                </div>
+            </li>
+
+            <li class="equipment-list-item">
+                <span class="equip-row">
+                    <span class="equip-name"> Lente Canon 800mm </span>
+                    <ion-icon name="arrow-dropdown" class="show-more hidden" id="show-details-3" onclick="toggleDetails(this)"></ion-icon>                    
+                </span>
+                <div class="equip-details">
+                    Patrimônio: 130738299<br>
+                    Data: 17/05/2019<br>
+                    Períodos: Manhã<br>
+                    Devolução: Aguardando<br>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        function showDetails(x){
+            x.classList.remove('hidden') // Remove a classe HIDDEN para que o toggleDetails saiba que a div de detalhes foi mostrada
+            x.setAttribute('name', 'arrow-dropup') // Muda o icone da seta
+
+            var divDetails =
+            x.parentNode 
+            .parentNode
+            .querySelector('.equip-details')
+            // Viaja pela DOM até encontrar a div dos detalhes
+
+            divDetails.style.display="block"
+            // Altera o display de "none" para "block"
+        }
+
+        function hideDetails(x){
+            x.classList.add('hidden');
+            x.setAttribute('name', 'arrow-dropdown')
+
+            var divDetails = 
+            x.parentNode 
+            .parentNode
+            .querySelector('.equip-details')
+
+            divDetails.style.display="none"
+        }
+
+        function toggleDetails(x){
+            // Condicional para identificar se a div está aparecendo ou não
+            if (x.classList.contains('hidden')){
+                showDetails(x) // Caso não, a função showDetails será chamada, para mostrar os detalhes
+            }
+            else{
+                hideDetails(x) // Caso sim, a função hideDetails será chamada, para esconder os detalhes
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+</body>
+</html>
